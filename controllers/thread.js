@@ -3,7 +3,7 @@ exports.post = function(req, res) {
     var newThread = new Thread({title: req.body.title, author: req.body.author});
     newThread.save();
     console.log('New thread ' + newThread.title + ' saved!');
-    res.redirect('/thread/' + newThread.title);
+    res.redirect('home');
 }
 
 exports.show = (function(req, res) {

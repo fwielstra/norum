@@ -1,20 +1,18 @@
-var test = require('nodeunit');
-var httputil = require('nodeunit').utils.httputil;
-var express = require('../utils/testableExpress.js');
+var suite = require('api-easy').describe('api');
 
-// set relative require path.
-require.paths.unshift('../..');
+// starts the server.
+require('../../app.js');
 
-var app = express.createServer();
-var routes = require('config/routes.js')(app);
-// todo
-/*
-exports.testHelloWorld = function(test) {
-    test.expect(1);
-    httputil(app.cgi(), function(server, client) {
-        client.request('POST', '/thread', {}, function (resp) {
-            test.equals(JSON.stringify({message: 'y halo thar'}), resp.body);
-            test.done();
-        });
-    });
-}*/
+suite
+    .use('localhost', 3000)
+    .setHeader('Content-Type', 'application/json')
+    .discuss('When using the Thread API')
+        .get('/')
+            .expect(200, {message: 'y halo thar'})
+            .next()
+        .post('/thread', {title: 'title-test', author: 'John Doe'})
+            // TODO: it should actually return a 302, but it seems
+            // apieasy does a POST on the url redirected to.
+            .expect(404)
+            .next()
+        .export(module);
