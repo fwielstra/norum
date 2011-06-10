@@ -15,15 +15,24 @@ You'll need to have Node.js, Node Package Manager (NPM) and MongoDB installed. L
 Getting started
 ==============
 
-Have NPM download the dependencies:
+First, install MongoDB. Best bet is to go to [the MongoDB quickstart](http://www.mongodb.org/display/DOCS/Quickstart+Unix) and install it according to your system. Don't forget to create a data directory - and I'd stick with the default, makes things easier for you. Add Mongo's bin directory to your PATH and run Mongod (MongoDB Daemon) as a daemon service. I run it in a separate terminal window and leave it like that. In a second terminal window, test if it works using the mongo commandline utility.
+
+```
+mongo
+>db.foo.save({yo: 1337});
+>db.foo.find();
+>exit
+```
+
+Next, have NPM download and setup the third-party dependencies:
 
 ```
 npm install -d
 ```
 
-and start the server:
+Finally, start the server:
 
 ```javascript
 node app.js
 ```
-
+A message should appear that the server runs on localhost:3000. Visit [http://localhost:3000](http://localhost:3000) and witness the glory.
