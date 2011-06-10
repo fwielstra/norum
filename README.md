@@ -2,6 +2,11 @@ This is a simple, me screwing around on a Friday kinda project. The goal is to w
 
 The application is built using Node.js on the back-end, using MongoDB as a storage engine. The software will initially be built as a simple RESTful webservice, in which the templates are rendered on the clientside. This should ensure a simple and fast back-end.
 
+Features
+========
+
+Please click the shiny 'Issues' button if you have a feature to suggest. Lacking a system like Jira, I'll just abuse that one to put user stories and the like in.
+
 Requirements
 ============
 
