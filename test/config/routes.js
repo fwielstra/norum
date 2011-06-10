@@ -14,7 +14,7 @@ exports.testHelloWorld = function(test) {
     test.expect(1);
     httputil(app.cgi(), function(server, client) {
         client.fetch('GET', '/', {}, function (resp) {
-            test.equals(JSON.stringify({message: 'y halo thar'}), resp.body);
+            test.equals('hello world'), resp.body);
             test.done();
         });
     });
