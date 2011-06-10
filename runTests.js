@@ -4,4 +4,6 @@ require.paths.push(__dirname + '/lib');
 var testrunner = require('nodeunit').reporters.default;
 
 process.chdir(__dirname);
-testrunner.run(['test/config', 'test/controllers']);
+//testrunner.run([]);
+
+console.log('Please run "vows test/*/*", not sure how to run tests in a different way at the moment.');
