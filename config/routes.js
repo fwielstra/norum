@@ -1,7 +1,5 @@
 module.exports = function(app) {
     app.get('/', function(req, res) {
-        res.render('index', {
-            title: 'Express'
-        });
+        res.send({message: 'y halo thar'});
     });
 }
