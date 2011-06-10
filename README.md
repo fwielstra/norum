@@ -5,7 +5,7 @@ The application is built using Node.js on the back-end, using MongoDB as a stora
 Features
 ========
 
-Please click the shiny 'Issues' button if you have a feature to suggest. Lacking a system like Jira, I'll just abuse that one to put user stories and the like in.
+I've set up a simple listing on Google Moderator, please [go here to suggest and vote for new features to be added](http://www.google.com/moderator/#15/e=92af0&t=92af0.40).
 
 Requirements
 ============
