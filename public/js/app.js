@@ -13,9 +13,11 @@ var testdata = {
 		this.element_selector = '#main';
 
 		this.get('#/', function(context) {
-			this.load('thread/test.json')
-			.then( function(thread) {
-				context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
+			this.load('thread')
+			.then( function(threads) {
+				$.each(threads, function(i, thread) {
+					context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
+				});
 			});
 		});
 	});
