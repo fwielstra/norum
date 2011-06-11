@@ -9,14 +9,13 @@ var testdata = {
 
 (function($) {
 	var app = $.sammy( function() {
+		this.use('Template');
 		this.element_selector = '#main';
 
 		this.get('#/', function(context) {
 			this.load('thread/test.json')
-			.then( function(items) {
-				$.each(items, function(i, item) {
-					context.log(item);
-				});
+			.then( function(thread) {
+				context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
 			});
 		});
 	});
