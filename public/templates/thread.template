@@ -1,10 +1,11 @@
-<!--     title:  String,
-    postdate: {type: Date, default: Date.now},
-    author: {type: String, default: 'Anon'}
-}); -->
-
 <div class="thread">
-	<div class="thread-title"><%= thread.title %></div>
-	<div class="thread-date"><%= thread.postdate %></div>
+	<div class="thread-title">
+		<a href="#/thread/<%= thread.title %>">
+			<%= thread.title %>
+		</a>
+	</div>
+
+	<time><%= thread.postdate %></time>
+
 	<div class="thread-author"><%= thread.author %></div>
 </div>

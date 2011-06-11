@@ -13,11 +13,19 @@ var testdata = {
 		this.element_selector = '#main';
 
 		this.get('#/', function(context) {
+			context.app.swap(''); // clears the screen when someone presses back to return to #/.
 			this.load('thread')
 			.then( function(threads) {
 				$.each(threads, function(i, thread) {
 					context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
 				});
+			});
+		});
+		
+		this.get('#/thread/:title', function(context) {
+			this.load('thread/' + this.params['title'])
+			.then(function(thread) {
+				context.partial('templates/thread.template', {thread: thread});
 			});
 		});
 	});
