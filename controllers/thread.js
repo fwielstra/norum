@@ -4,8 +4,14 @@ exports.post = function(req, res) {
     res.redirect('home');
 }
 
+exports.list = function(req, res) {
+	Thread.find(function(err, threads) {
+		res.send(threads);
+	});
+}
+
 exports.show = (function(req, res) {
-    Thread.findOne({title: req.params.title}, function(error, article){
-        res.send((error) ? error : article);
+    Thread.findOne({title: req.params.title}, function(error, thread){
+        res.send((error) ? error : thread);
     })
 });
