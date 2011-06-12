@@ -14,6 +14,9 @@ module.exports = function(app) {
         });
     });
     
+    app.post('/', function(req, res) {
+    	res.end();
+    });
     app.post('/thread', thread.post);
     app.get('/thread/:title.:format?', thread.show);
     app.get('/thread', thread.list);

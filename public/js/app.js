@@ -1,12 +1,3 @@
-var testdata = {
-	"title": "The Door",
-	"artist": "Religious Knives",
-	"image": "http://ecx.images-amazon.com/images/I/51og8BkN8jL._SS250_.jpg",
-	"large_image": "http://ecx.images-amazon.com/images/I/51og8BkN8jL._SS500_.jpg",
-	"price": 9.98,
-	"url": "http://www.amazon.com/Door-Religious-Knives/dp/B001FGW0UQ/?tag=quirkey-20"
-};
-
 (function($) {
 	var app = $.sammy( function() {
 		this.use('Template');
@@ -19,6 +10,9 @@ var testdata = {
 				$.each(threads, function(i, thread) {
 					context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
 				});
+			})
+			.then(function() {
+				context.render('templates/newthread.template').appendTo(context.$element());
 			});
 		});
 		
@@ -28,7 +22,14 @@ var testdata = {
 				context.partial('templates/thread.template', {thread: thread});
 			});
 		});
+		
+		this.post('#/thread', function(context) {
+			this.log('Params: ', this.params);
+			$.post('thread', this.params);
+			this.redirect('#/thread/' + this.params.title);
+		});
 	});
+	
 	$( function() {
 		app.run('#/');
 	});

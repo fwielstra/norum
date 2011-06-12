@@ -1,0 +1,16 @@
+<div id="newthread-form">
+	<h2>Poast a new thrad</h2>
+	<form action="#/thread" method="post">
+		<p>
+			<label>Title:</label>
+			<input type="text" name="title" />
+		</p>
+		<p>
+			<label>Author:</label>
+			<input type="text" name="author" />
+		</p>
+		<p>
+			<input type="submit" value="I maek thrad" />
+		</p>
+	</form>
+</div>
