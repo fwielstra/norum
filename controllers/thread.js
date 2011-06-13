@@ -18,8 +18,8 @@ exports.list = function(req, res) {
 
 exports.show = (function(req, res) {
     Thread.findOne({title: req.params.title}, function(error, thread) {
-        var posts = Post.find({thread: thread._id}, function(error, posts) {
-          res.send([{thread: thread, posts: posts}]);
-        });
-    })
+       Post.find({thread: thread._id}, function(error, posts) {
+         res.send([{thread: thread, replies: posts}]);
+       });
+    });
 });
