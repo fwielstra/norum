@@ -5,15 +5,16 @@
 
 		this.get('#/', function(context) {
 			context.app.swap(''); // clears the screen when someone presses back to return to #/.
-			this.load('thread')
+			this.load('thread', {cache:false})
 			.then( function(threads) {
 				$.each(threads, function(i, thread) {
 					context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
 				});
-			})
-			.then(function() {
-				context.render('templates/newthread.template').appendTo(context.$element());
 			});
+		});
+		
+		this.get('#/thread/poast', function(context) {
+		  this.partial('templates/newthread.template');
 		});
 		
 		this.get('#/thread/:title', function(context) {
