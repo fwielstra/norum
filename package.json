@@ -7,6 +7,6 @@
     , "jade": ">= 0.0.1"
     , "mongoose": "1.3.7"
     , "nodeunit": "0.5.1"
-    , "api-easy": "0.2.1"
+    , "api-easy": "0.2.3"
   }
 }
