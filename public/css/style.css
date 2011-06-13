@@ -87,11 +87,8 @@ a:hover { color: #036; }
 */
 
 
-
-
-
-
-
+.thread-title { font-weight: bold; }
+.thread { margin: 10px; }
 
 
 

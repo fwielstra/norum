@@ -1,6 +1,7 @@
 var Thread = require('../models/thread.js');
 exports.post = function(req, res) {
-    new Thread({title: req.body.title, author: req.body.author}).save();
+    var thread = new Thread({title: req.body.title, author: req.body.author}).save();
+    console.log('New thread: ', thread);
     res.redirect('home');
 }
 
