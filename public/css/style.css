@@ -87,9 +87,11 @@ a:hover { color: #036; }
 */
 
 
+h2.thread-title {font-size: 2em;}
 .thread-title { font-weight: bold; }
 .thread { margin: 10px; }
-
+.threadinfo { margin-bottom: 15px; }
+.reply { margin-bottom: 5px; }
 
 
 

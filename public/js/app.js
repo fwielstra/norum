@@ -8,7 +8,7 @@
 			this.load('thread', {cache:false})
 			.then( function(threads) {
 				$.each(threads, function(i, thread) {
-					context.render('templates/thread.template', {thread : thread}).appendTo(context.$element());
+					context.render('templates/threadlist.template', {thread : thread}).appendTo(context.$element());
 				});
 			});
 		});
@@ -20,7 +20,8 @@
 		this.get('#/thread/:title', function(context) {
 			this.load('thread/' + this.params['title'])
 			.then(function(thread) {
-				context.partial('templates/thread.template', {thread: thread});
+			  console.log(thread);
+				context.partial('templates/thread.template', {thread: thread[0]});
 			});
 		});
 		

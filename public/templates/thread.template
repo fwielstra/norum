@@ -1,11 +1,22 @@
 <div class="thread">
-	<div class="thread-title">
-		<a href="#/thread/<%= thread.title %>">
-			<%= thread.title %>
-		</a>
+  <div class="threadinfo">
+  	<h2 class="thread-title">
+  			<%= thread.thread.title %>
+  	</h2>
+  	Started <time><%= thread.thread.postdate %></time> by <span class="thread-author"><%= thread.thread.author %></span>
 	</div>
-
-	<time><%= thread.postdate %></time>
-
-	<div class="thread-author"><%= thread.author %></div>
+	
+	<% if (thread.replies) { %>
+  	<div class="replies">
+  	 <% for ( var i = 0; i < thread.replies.length; i++ ) { %>
+  	   <div class="reply">
+    	   <small class="replymeta">
+    	     Posted <time><%= thread.replies[i].date %></time> by <span class="author"> <%= thread.replies[i].author %><br />
+    	   </small>
+    	   <span class="replybody"><%= thread.replies[i].post %></span>
+  	   </div>
+  	 <% } %>
+  	</div>
+	
+	<% } %>
 </div>

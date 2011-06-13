@@ -1,0 +1,10 @@
+<div class="thread">
+    <div class="thread-title">
+      <a href="#/thread/<%= thread.title %>">
+        <%= thread.title %>
+      </a>
+    </div>
+    <time><%= thread.postdate %></time>
+    <div class="thread-author"><%= thread.author %></div>
+  </div>
+</div>
