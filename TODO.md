@@ -11,8 +11,22 @@ TODO STORIES
  * The user can read all replies to a thread.
  * A user can register an account and log in (thus claim ownership of his username and threads / posts)
  * The user can edit his existing posts and threads (depends on register story)
+ * Thread listings are paginated.
+ * Thread replies / posts are paginated.
 
+LONG-TERM STORIES
+================
 
+ * Relevant site contents (threads & posts) can be indexed by search engines
+  * server-side template rendering
+  * Research: Shared templated between front- and back-end.
+
+NON-FUNCTIONALS
+===============
+
+ * Automate inserting test data
+ * Up unit test coverage.
+ * Use a temporary / transitive MongoDB instance with test data to run integration tests.
 
 DONE STORIES
 ====
