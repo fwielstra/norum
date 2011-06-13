@@ -7,4 +7,8 @@ var threadSchema = new Schema({
     author: {type: String, default: 'Anon'}
 });
 
-module.exports = mongoose.model('Thread', threadSchema);
+mongoose.model('Thread', threadSchema);
+
+module.exports = function(db) {
+  return db.model('Thread');
+}

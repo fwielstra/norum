@@ -1,5 +1,9 @@
-var Thread = require('../models/thread.js');
-var Post = require('../models/post.js');
+var mongoose = require('mongoose');
+var connection = mongoose.connect('mongodb://localhost/norum');
+
+var Thread = require('../models/thread.js')(connection);
+var Post = require('../models/post.js')(connection);
+
 exports.post = function(req, res) {
     var thread = new Thread({title: req.body.title, author: req.body.author}).save();
     console.log('New thread: ', thread);

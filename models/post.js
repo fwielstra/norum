@@ -9,4 +9,9 @@ var postSchema = new Schema({
     post: String
 });
 
-module.exports = mongoose.model('Post', postSchema);
+mongoose.model('Post', postSchema);
+
+
+module.exports = function(db) {
+  return db.model('Post');
+}
