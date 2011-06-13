@@ -7,18 +7,22 @@ Todo stories will be at the top, done at the bottom.
 
 TODO STORIES
 ====
- * The user can create a new thread
-	* Back-end controller
-	* Front-end logic and display
- * The user can view a list of threads
-	* Back-end controller
-	* Front-end logic and display
- * The user can view an existing thread
-	* Back-end controller
-	* Front-end logic and display
+ * The user can add a reply to a thread
+ * The user can read all replies to a thread.
+ * A user can register an account and log in (thus claim ownership of his username and threads / posts)
+ * The user can edit his existing posts and threads (depends on register story)
 
-	
 
 
 DONE STORIES
 ====
+
+ X The user can create a new thread
+  X Back-end controller
+  X Front-end logic and display
+ X The user can view a list of threads
+  X Back-end controller
+  X Front-end logic and display
+ X The user can view an existing thread
+  X Back-end controller
+  X Front-end logic and display
