@@ -1,8 +1,9 @@
 module.exports = function(app, Thread, Post) {
 
   function post(req, res) {
-    new Thread({title: req.body.title, author: req.body.author}).save();
-    res.redirect('home');
+    new Thread({title: req.body.title, author: req.body.author}).save(function(error) {
+      res.end(error);
+    });
   }
   
   function list(req, res) {

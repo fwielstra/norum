@@ -9,5 +9,4 @@ exports.thread = suite
     .followRedirect(false)
     .discuss('When using the Thread API')
         .post('/thread', {title: 'title-test', author: 'John Doe'})
-            .expect(302)
             .next();

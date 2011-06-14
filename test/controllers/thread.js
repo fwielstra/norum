@@ -33,8 +33,8 @@ exports['Thread router'] = nodeunit.testCase({
     test.done();
   },
   
-  'The POST "/thread" route callback creates and saves a new Thread object, then redirects to home.': function(test) {
-    test.expect(2);
+  'The POST "/thread" route callback creates and saves a new Thread object.': function(test) {
+    test.expect(1);
     
     // mock the request parameters
     var request = {body: {title: 'test', author: 'test'}};
@@ -42,22 +42,22 @@ exports['Thread router'] = nodeunit.testCase({
     // mock the thread model with a test for whether the right params are passed.
     var Thread = function(params) {
       return {
-        save: function() {
+        save: function(callback) {
           test.deepEqual(params, request.body);
+          callback();
         }
       }
     }
     // mock the response with a test if the redirect is correct.    
     var response = {
-      redirect: function(path) {
-        test.equal(path, 'home');
+      end: function(response) {
+        test.done();
       }
     }
     // initialize the controller, get the route for the post on /thread.
     var app = new mockApp();
     createController(app, Thread);
     app.post['/thread'](request, response);
-    test.done();
   },
   
   'The GET "/thread" route callback returns a list of Threads': function(test) {
