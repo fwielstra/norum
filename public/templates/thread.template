@@ -19,4 +19,23 @@
   	</div>
 	
 	<% } %>
+	
+	<div id="reply-form">
+    <h2>Reply to thread</h2>
+    <form action="#/reply" method="post">
+      <input type="hidden" name="threadid" value="<%=thread.thread._id %>" />
+      <input type="hidden" name="threadtitle" value="<%=thread.thread.title %>" />
+      <p>
+        <label>Your name:</label>
+        <input type="text" name="author" />
+      </p>
+      <p>
+        <label>Your reply:</label>
+        <textarea name="post"></textarea>
+      </p>
+      <p>
+        <input type="submit" value="I maek poast" />
+      </p>
+    </form>
+  </div>
 </div>

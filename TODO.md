@@ -7,11 +7,18 @@ Todo stories will be at the top, done at the bottom.
 
 TODO STORIES
 ====
- * The user can add a reply to a thread
- * The user can read all replies to a thread.
-  X API
-  X Front-end
+
  * A user can register an account and log in (thus claim ownership of his username and threads / posts)
+  * Back-end:
+    * Register method
+    * Login method
+    * retrieve data method (?)
+    * Use logged in user's name when storing threads / replies.
+  * Front-end:
+    * Register page
+    * Login page or popup / form
+    * Hide username form field if user is logged in.
+
  * The user can edit his existing posts and threads (depends on register story)
  * Thread listings are paginated.
  * Thread replies / posts are paginated.
@@ -24,9 +31,11 @@ LONG-TERM STORIES
   * server-side template rendering
   * Research: Shared templated between front- and back-end.
 
-NON-FUNCTIONALS
+NON-FUNCTIONALS / TASKS
 ===============
 
+ * Refactor the thread API so it uses IDs instead of titles (titles may be duplicated). Search engine friendliness is not
+    important for an API, and ensuring unique titles is a bit tricky.
  * Completely review and organize the templates / structuring
  * Style the whole thing.
  * Automate inserting test data
@@ -45,3 +54,9 @@ DONE STORIES
  X The user can view an existing thread
   X Back-end controller
   X Front-end logic and display
+ X The user can add a reply to a thread
+  X API
+  X Front-end
+ X The user can read all replies to a thread.
+  X API
+  X Front-end

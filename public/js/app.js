@@ -18,7 +18,7 @@
 		});
 		
 		this.get('#/thread/:title', function(context) {
-			this.load('thread/' + this.params['title'])
+			this.load('thread/' + this.params['title'], {cache:false})
 			.then(function(thread) {
 			  console.log(thread);
 				context.partial('templates/thread.template', {thread: thread[0]});
@@ -29,6 +29,12 @@
 			this.log('Params: ', this.params);
 			$.post('thread', this.params);
 			this.redirect('#/thread/' + this.params.title);
+		});
+		
+		this.post('#/reply', function(context) {
+		  this.log('Params:', this.params);
+		  $.post('thread/reply', this.params);
+		  this.redirect('#/thread/' + this.params.threadtitle);
 		});
 	});
 	
