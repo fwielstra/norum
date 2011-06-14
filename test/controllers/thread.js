@@ -27,6 +27,7 @@ exports['Thread router'] = nodeunit.testCase({
     var app = new mockApp();
     createController(app);
     test.ok(app.post['/thread']);
+    test.ok(app.post['/thread/reply']);
     test.ok(app.get['/thread']);
     test.ok(app.get['/thread/:title.:format?']);
     test.done();
@@ -126,6 +127,91 @@ exports['Thread router'] = nodeunit.testCase({
     var app = new mockApp();
     createController(app, Thread, Post);
     app.get['/thread/:title.:format?'](request, response);
+    test.done();
+  },
+  
+  'The GET "/thread/:title.:format?" callback returns an error when the thread does not exist': function(test) {
+    test.expect(1);
+    var request = {params: {title: ''}};
+    var error = 'thread not found';
+    var Thread = {
+      findOne: function(params, callback) {
+        callback(error, null);
+      }
+    };
+    var response = {
+      send: function(content) {
+        test.equal(content, error);
+      }
+    };
+    var app = new mockApp();
+    createController(app, Thread);
+    app.get['/thread/:title.:format?'](request, response);
+    test.done();
+  },
+
+  'The POST "/thread/reply/:threadid" route callback stores a new post attached to the given thread, making sure the thread exists.': function(test) {
+    test.expect(2);
+    
+    var thread = {_id: '1234'}
+    var request = {
+      body : {
+        threadid: thread._id,
+        author: 'pete',
+        post: 'Hi my name is pete im nu hear'
+      }
+    };
+    
+    var Post = function(params){
+      return {
+        save: function(callback) {
+          test.deepEqual(params, {
+            thread: request.body.threadid,
+            author: request.body.author,
+            post: request.body.post
+          });
+          callback();
+        }
+      }
+    };
+    
+    var Thread = {
+      findById: function(id, callback) {
+        test.equals(id, thread._id);
+        callback(null, thread);
+      }
+    };
+    
+    var response = {
+      end: function() {
+        test.done();
+      }
+    }
+    
+    var app = new mockApp();
+    createController(app, Thread, Post);
+    app.post['/thread/reply'](request, response);
+  },
+  
+  'The POST "/thread/reply/:threadid" returns an error when the given thread was not found' : function(test) {
+    test.expect(1);
+    
+    var error = 'an error occurred';
+    var Thread = {
+      findById: function(id, callback) {
+        callback(error, null);
+      }
+    }
+    
+    var response = {
+      send: function(data) {
+        test.equals(data, error);
+      }
+    }
+    
+    var app = new mockApp();
+    createController(app, Thread);
+    app.post['/thread/reply']({body: {threadid: 'asdf'}}, response);
     test.done();
   }
 });
