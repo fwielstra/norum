@@ -32,7 +32,11 @@ npm install -d
 
 Finally, start the server:
 
-```javascript
+```
 node app.js
 ```
-A message should appear that the server runs on localhost:3000. Visit [http://localhost:3000](http://localhost:3000) and witness the glory.
+A message should appear that the server runs on localhost:3000 (along with a listing of the settings). Visit [http://localhost:3000](http://localhost:3000) and witness the glory.
+
+To run in production mode (with caching enabled), run:
+
+NODE_ENV=production node app.js

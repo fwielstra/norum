@@ -1,10 +1,12 @@
 {
-    "name": "application-name"
+    "name": "norum"
   , "version": "0.0.1"
   , "private": true
+  , "scripts": {
+      "start": "node app.js"
+    }
   , "dependencies": {
       "express": "2.3.11"
-    , "jade": ">= 0.0.1"
     , "mongoose": "1.3.7"
     , "nodeunit": "0.5.1"
     , "api-easy": "0.2.3"
