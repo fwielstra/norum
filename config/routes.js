@@ -1,5 +1,3 @@
-var thread = require('../controllers/thread.js');
-
 module.exports = function(app) {
     app.get('/', function(req, res) {
         fs = require('fs');
@@ -13,11 +11,4 @@ module.exports = function(app) {
             res.end();
         });
     });
-    
-    app.post('/', function(req, res) {
-    	res.end();
-    });
-    app.post('/thread', thread.post);
-    app.get('/thread/:title.:format?', thread.show);
-    app.get('/thread', thread.list);
 }
