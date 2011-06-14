@@ -1,10 +1,7 @@
-module.exports = function(app, connection) {
-  var Thread = require('../models/thread.js')(connection);
-  var Post = require('../models/post.js')(connection);
+module.exports = function(app, Thread, Post) {
 
   function post(req, res) {
-    var thread = new Thread({title: req.body.title, author: req.body.author}).save();
-    console.log('New thread: ', thread);
+    new Thread({title: req.body.title, author: req.body.author}).save();
     res.redirect('home');
   }
   
@@ -22,17 +19,9 @@ module.exports = function(app, connection) {
     });
   }
   
-  // set up routes
+  // set up this controller's routes and callback methods.
   app.post('/thread', post);
   app.get('/thread/:title.:format?', show);
   app.get('/thread', list);
-  
-  // expose our handler methods so they can be tested.
-  return {
-    post: post,
-    list: list,
-    show: show
-  };
-
 };
 

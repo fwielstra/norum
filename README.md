@@ -30,6 +30,17 @@ Next, have NPM download and setup the third-party dependencies:
 npm install -d
 ```
 
+Run the unit tests with:
+```
+node runTests.js
+```
+
+Run the integration tests with:
+
+```
+vows test/API/*
+```
+
 Finally, start the server:
 
 ```
@@ -39,4 +50,6 @@ A message should appear that the server runs on localhost:3000 (along with a lis
 
 To run in production mode (with caching enabled), run:
 
+```
 NODE_ENV=production node app.js
+```

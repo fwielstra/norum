@@ -10,9 +10,17 @@ var mongoose = require('mongoose');
 // and/or different for dev, test and production.
 var connection = mongoose.connect('mongodb://localhost/norum');
 
-// set up the routes
+// set up our models, to be passed to our controllers. This is so we can
+// mock the Thread and Post model for the controller's unit test.
+// Not too happy with this setup at the moment.
+var Thread = require('./models/thread.js')(connection);
+var Post = require('./models/post.js')(connection);
+
+// set up the basic route to /, which returns the contents of the index.html file.
 require('./config/routes.js')(app);
-require('./controllers/thread.js')(app, connection);
+
+// set up the thread controller, passing it the thread and post models.
+require('./controllers/thread.js')(app, Thread, Post);
 
 // start the server.
 app.listen(3000);
