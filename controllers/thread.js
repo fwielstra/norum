@@ -1,15 +1,19 @@
 module.exports = function(app, Thread, Post) {
 
   function post(req, res) {
-    new Thread({title: req.body.title, author: req.body.author}).save(function(error) {
-        console.log('New thread "%s" created by %s', req.body.title, req.body.author);
-      res.end(error);
+    new Thread({title: req.body.title, author: req.body.author}).save(function(err, thread) {
+        if (err) throw err;
+      new Post({thread: thread._id, author: req.body.author, post: req.body.post}).save(function(err, post) {
+          if (err) throw err;
+          console.log('New thread "%s" created by %s with post %s', req.body.title, req.body.author, post.body);
+        });
     });
   }
   
   function list(req, res) {
       console.log('Listing threads...');
     Thread.find(function(err, threads) {
+        if (err) throw err;
         console.log('Returning %d threads', threads.length);
       res.send(threads);
     });

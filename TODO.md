@@ -33,44 +33,14 @@ LONG-TERM STORIES
 
 NON-FUNCTIONALS / TASKS
 ===============
-
  * Refactor the thread API so it uses IDs instead of titles (titles may be duplicated). Search engine friendliness is not
     important for an API, and ensuring unique titles is a bit tricky.
+ * Figure out a global way to handle any sort of error (for example when saving stuff). error should be logged, user should be informed.
  * Completely review and organize the templates / structuring
  * Style the whole thing.
  * Automate inserting test data
  * Up unit test coverage.
  * Use a temporary / transitive MongoDB instance with test data to run integration tests.
-
-
-API METHODS
-===========
-
-Figured it'd be a good idea to do some planning first, do the back-end, then 
-build a front-end independently. In order to do that, a list of available API
-methods would be pleasant. This is the v1, as simple as possible. This assumes
-the user is authenticated already (in whatever way).
-
-Reading
-Thread
-
-List of threads (title and basic information)
-   GET site.com/thread
-
-First page of a thread, based on default posts per page. Each call to
-/thread/1234 also supplies basic thread info like thread title etc.
-   GET site.com/thread/1234
-
-Xth page of a thread, based on default posts per page
-   GET site.com/thread/1234/5
-
-Writing
-New thread
-    PUT site.com/thread?title=xyz&firstpost=asdfsdfa
-
-New poast. Might want to consider moving this to a /post service.
-    PUT site.com/thread/reply?thread=123?post=ssdfdijfjf
-
 
 DONE STORIES
 ====
