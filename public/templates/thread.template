@@ -1,9 +1,14 @@
+<%
+function formatDate(jsonDate) {
+    var date = new Date(jsonDate);
+    return ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+}
+%>
 <div class="thread">
   <div class="threadinfo">
   	<h2 class="thread-title">
   			<%= thread.thread.title %>
   	</h2>
-  	Started <time><%= thread.thread.postdate %></time> by <span class="thread-author"><%= thread.thread.author %></span>
 	</div>
 	
 	<% if (thread.replies) { %>
@@ -11,7 +16,9 @@
   	 <% for ( var i = 0; i < thread.replies.length; i++ ) { %>
   	   <div class="reply">
     	   <small class="replymeta">
-    	     Posted <time><%= thread.replies[i].date %></time> by <span class="author"> <%= thread.replies[i].author %><br />
+    	     <span class="author"><%= thread.replies[i].author %></span> [<time datetime=<%= thread.replies[i].date %>>
+    	     <%= formatDate(thread.replies[i].date) %>
+    	     </time>]:
     	   </small>
     	   <span class="replybody"><%= thread.replies[i].post %></span>
   	   </div>
