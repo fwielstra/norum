@@ -25,5 +25,5 @@ require('./controllers/thread.js')(app, Thread, Post);
 // start the server.
 app.listen(3000);
 
-console.log("Express server listening on port %d", app.address().port);
+console.log("Express server running in %s mode on port %d", app.set('env'), app.address().port);
 console.log("Settings: ", app.settings);
