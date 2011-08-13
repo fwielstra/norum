@@ -1,17 +1,13 @@
 var express = require('express');
 var app = module.exports = express.createServer();
 
-var mode = process.env.NORUM_MODE || 'development';
-var settings = require('./config/settings-' + mode + '.js');
-
 // set up the environment (used filters, public folder location, etc)
 require('./config/environment.js')(app, express);
 
 // set up the connection to Mongo.
 var mongoose = require('mongoose');
 
-var connectionString = settings.mongodb_connection_string;
-console.log("Using Mongo connection string %s", connectionString);
+var connectionString = app.set('mongodb_url');
 var connection = mongoose.connect(connectionString);
 
 // set up our models, to be passed to our controllers. This is so we can

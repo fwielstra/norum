@@ -1,1 +1,0 @@
-exports.mongodb_connection_string = 'mongodb://localhost/norum-dev';

@@ -8,9 +8,14 @@ module.exports = function(app, express) {
     
     app.configure('development', function(){
       app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+      app.set('mongodb_url', 'mongodb://localhost/norum-dev');
     });
     
     app.configure('production', function(){
-      app.use(express.errorHandler()); 
+      app.set('mongodb_url', 'mongodb://localhost/norum');
+    });
+    
+   app.configure('testing', function(){
+      app.set('mongodb_url', 'mongodb://localhost/norum-test');
     });
 };

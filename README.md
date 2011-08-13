@@ -32,13 +32,13 @@ npm install -d
 
 Run the unit tests with:
 ```
-node runTests.js
+NODE_ENV='test' node runTests.js
 ```
 
 Run the integration tests with:
 
 ```
-vows test/API/*
+NODE_ENV='test' vows test/API/*
 ```
 
 Finally, start the server:
