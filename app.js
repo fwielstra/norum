@@ -1,14 +1,18 @@
 var express = require('express');
 var app = module.exports = express.createServer();
 
+var mode = process.env.NORUM_MODE || 'development';
+var settings = require('./config/settings-' + mode + '.js');
+
 // set up the environment (used filters, public folder location, etc)
 require('./config/environment.js')(app, express);
 
 // set up the connection to Mongo.
 var mongoose = require('mongoose');
-// TODO: probably want to make this an external configuration parameter,
-// and/or different for dev, test and production.
-var connection = mongoose.connect('mongodb://localhost/norum');
+
+var connectionString = settings.mongodb_connection_string;
+console.log("Using Mongo connection string %s", connectionString);
+var connection = mongoose.connect(connectionString);
 
 // set up our models, to be passed to our controllers. This is so we can
 // mock the Thread and Post model for the controller's unit test.

@@ -1,5 +1,6 @@
 var suite = require('api-easy').describe('api');
 
+process.env.MODE = 'test';
 // starts the server.
 require('../../app.js');
 
